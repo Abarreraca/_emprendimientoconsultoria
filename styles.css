@@ -1,0 +1,199 @@
+/* =========================
+   ESTILO GENERAL
+========================= */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    background: linear-gradient(135deg, #0a2540, #123a63);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* =========================
+   LOGO + ESCÁNER (CORRECTO)
+========================= */
+.logo-container {
+    display: inline-block;
+    position: relative;
+    overflow: hidden; /* ✅ CLAVE: evita que el escáner se desborde */
+}
+
+.logo {
+    width: 300px;
+    height: auto;
+    background: transparent;
+    mix-blend-mode: multiply;
+    filter: brightness(1.2) contrast(1.1);
+    animation: aparecerLogo 1.2s ease-out;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+}
+
+/* Escáner */
+.logo-container::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(
+        rgba(0,255,255,0),
+        rgba(0,255,255,0.4),
+        rgba(0,255,255,0)
+    );
+    animation: scan 8s infinite;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+@keyframes aparecerLogo {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+nav {
+    background-color: #161b22;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #58a6ff;
+    margin: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* =========================
+   SECCIONES GENERALES
+========================= */
+section {
+    padding: 30px;
+    margin: 20px;
+    background: #161b22;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+
+h1, h2 {
+    color: #58a6ff;
+}
+
+/* =========================
+   CONTENEDORES GENERALES
+========================= */
+.inicio-container,
+.servicios-container,
+.nosotros-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   BIENVENIDOS AJBC (50 / 50 ✅)
+========================= */
+#inicio .inicio-container {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+/* Texto lado izquierdo */
+.inicio-texto {
+    width: 50%;
+    text-align: justify;
+    line-height: 1.7;
+}
+
+/* Imagen lado derecho */
+.inicio-imagen {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.inicio-imagen img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.4);
+}
+
+/* =========================
+   SERVICIOS
+========================= */
+.card {
+    background: #0a2540;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #1f6feb;
+    margin: 10px;
+    width: 250px;
+}
+
+.card h3 {
+    color: #58a6ff;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0,255,255,0.5);
+}
+
+/* =========================
+   NOSOTROS
+========================= */
+.nosotros-logo img {
+    width: 250px;
+    background: transparent;
+    filter: drop-shadow(0 0 20px rgba(0,255,255,0.6));
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    #inicio .inicio-container {
+        flex-direction: column;
+    }
+
+    .inicio-texto,
+    .inicio-imagen {
+        width: 100%;
+    }
+
+    .inicio-imagen img {
+        width: 95%;
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background-color: #0a1f44;
+    text-align: center;
+    padding: 15px;
+}
